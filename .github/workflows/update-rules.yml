@@ -1,8 +1,6 @@
 name: Run index.js and push result.json
 
 on:
-  schedule:
-    - cron: '0 */12 * * *'
   workflow_dispatch:
 
 jobs:
@@ -33,4 +31,4 @@ jobs:
         git add result.json
         git commit -m "Auto update result.json" || echo "No changes to commit"
         git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}
-        git push origin HEAD:${{ github.ref }}
+        git push origin HEAD:${{ github.ref_name }}
